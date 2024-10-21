@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonder 1</title>
+    <style>
+        body {
+            background-color: #2a2a2a;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: subtleFloat 3s ease-in-out infinite;
+        }
+
+        p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        .back {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #444;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .back:hover {
+            background-color: #666;
+        }
+
+        /* Subtle floating animation */
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Wonder 1: The Great Pyramid of Giza</h1>
+    <p>The Great Pyramid of Giza is the only surviving wonder of the ancient world. Built as a tomb for the Egyptian Pharaoh Khufu, it stood as the tallest man-made structure for over 3,800 years.</p>
+
+    <div class="back" onclick="location.href='home.html'">Back to Home</div>
+
+</body>
+</html>

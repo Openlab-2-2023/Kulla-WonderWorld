@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonder World</title>
+    <style>
+        body {
+            background-color: #000;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cursive', 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .center-text {
+            color: white;
+            font-size: 4rem;
+            font-family: 'Georgia', serif;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+            animation: subtleFloat 3s ease-in-out infinite;
+        }
+
+        
+        .center-text:hover {
+            letter-spacing: 15px; 
+            transform: translateY(-10px) rotate(1deg); 
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+        }
+
+        
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+
+   
+    <div class="center-text" id="wonderWorld">Wonder World</div>
+
+    <script>
+       
+        document.getElementById('wonderWorld').addEventListener('click', function() {
+            window.location.href = "home.html";
+        });
+    </script>
+
+</body>
+</html>
