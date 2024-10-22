@@ -6,7 +6,7 @@
     <title>Contact Us</title>
     <style>
         body {
-            background-color: #1a1a1a;
+            background: #1b1b1b url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); /* Subtle texture */
             color: white;
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -14,6 +14,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
 
         h1 {
@@ -61,6 +62,41 @@
             background-color: #444;
         }
 
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .modal-content {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .close-btn {
+            background-color: #2a2a2a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .close-btn:hover {
+            background-color: #444;
+        }
+
         .back {
             margin-top: 30px;
             padding: 10px 20px;
@@ -79,5 +115,34 @@
 <body>
 
     <h1>Contact Us</h1>
-    <form>
-        <input type="text" placeholder="
+
+    <!-- Contact form -->
+    <form id="contactForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <div class="submit-btn" onclick="sendMessage()">Send Message</div>
+    </form>
+
+    <!-- Modal for confirmation -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p>Message has been sent!</p>
+            <div class="close-btn" onclick="closeModal()">Close</div>
+        </div>
+    </div>
+
+    <div class="back" onclick="location.href='home.html'">Back to Home</div>
+
+    <script>
+        function sendMessage() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domovská Stránka</title>
+    <title>Home Page</title>
     <style>
         body {
-            background-color: #1a1a1a;
+            background: #1c1c1c;
             color: white;
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -14,75 +14,89 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
 
         h1 {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             font-size: 3rem;
             letter-spacing: 1.5px;
             font-family: 'Georgia', serif;
         }
 
-        /* Container for buttons */
+        /* Grid layout for buttons */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Aligns the buttons in 3 columns */
-            gap: 20px;
-            width: 70%; /* Adjust width as needed */
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 40px;
+            width: 80%;
             justify-items: center;
         }
 
+        /* Button style (less round) */
         .button {
             background-color: #2a2a2a;
             color: white;
-            padding: 20px 40px;
+            padding: 15px 40px;
             font-size: 1.3rem;
-            border-radius: 8px;
+            border-radius: 15px; /* Less round corners */
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             width: 200px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            position: relative;
-            font-family: 'Arial', sans-serif;
-        }
-
-        /* Elegant hover effect */
-        .button:hover {
-            background-color: #444;
-            transform: translateY(-5px); /* Slight lift */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Additional navigation buttons */
-        .nav-buttons {
-            margin-top: 30px;
+            height: 100px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center;
         }
 
-        .nav-button {
-            background-color: #2a2a2a;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        /* Center the last (7th) button */
+        .grid-container .button:last-child {
+            grid-column: 2 / 3;
         }
 
-        .nav-button:hover {
+        /* Button hover effect */
+        .button:hover {
             background-color: #444;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2); /* Lighter hover effect */
+        }
+
+        /* Contact Us link at the bottom */
+        .contact-us {
+            margin-top: 40px;
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .contact-us:hover {
+            color: #f0f0f0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr; /* One column on smaller screens */
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>Vyberte svoj div</h1>
+    <h1>Select Your Wonder</h1>
 
-    <!-- Grid container for aligned buttons -->
+    <!-- Grid container for wonders -->
     <div class="grid-container">
         <div class="button" onclick="location.href='wonder1.html'">Wonder 1</div>
         <div class="button" onclick="location.href='wonder2.html'">Wonder 2</div>
@@ -93,12 +107,8 @@
         <div class="button" onclick="location.href='wonder7.html'">Wonder 7</div>
     </div>
 
-    <!-- Additional navigation buttons -->
-    <div class="nav-buttons">
-        <div class="nav-button" onclick="location.href='about.html'">About</div>
-        <div class="nav-button" onclick="location.href='contact.html'">Contact</div>
-        <div class="nav-button" onclick="location.href='index.html'">Back to Wonder World</div>
-    </div>
+    <!-- Contact Us at the bottom -->
+    <div class="contact-us" onclick="location.href='contact.html'">Contact Us</div>
 
 </body>
 </html>

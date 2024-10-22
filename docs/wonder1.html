@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wonder 1</title>
+    <title>Div 1</title>
     <style>
         body {
             background-color: #2a2a2a;
@@ -11,11 +11,11 @@
             font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 20px;
+            overflow-y: scroll; 
+            height: 100vh; 
             text-align: center;
-            overflow: hidden;
             animation: fadeIn 1s ease forwards;
         }
 
@@ -26,9 +26,21 @@
         }
 
         p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             max-width: 600px;
             padding: 0 20px;
+            line-height: 1.5; 
+        }
+
+        .highlight {
+            color: #1E90FF; 
+            font-weight: bold;
+        }
+
+        .image-container {
+            margin: 20px 0; 
+            width: 100%; 
+            max-width: 600px; 
         }
 
         .back {
@@ -46,7 +58,7 @@
             background-color: #666;
         }
 
-        /* Subtle floating animation */
+        
         @keyframes subtleFloat {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
@@ -61,10 +73,25 @@
 </head>
 <body>
 
-    <h1>Wonder 1: The Great Pyramid of Giza</h1>
-    <p>The Great Pyramid of Giza is the only surviving wonder of the ancient world. Built as a tomb for the Egyptian Pharaoh Khufu, it stood as the tallest man-made structure for over 3,800 years.</p>
+    <h1>Wonder 1: Veľká pyramída v Gíze</h1>
+    
+    <div class="image-container">
+        <img src="../images/pyramidy-v-gize-2_1200x0.jpg" alt="Veľká pyramída v Gíze" style="width: 100%; border-radius: 10px;">
+    </div>
 
-    <div class="back" onclick="location.href='home.html'">Back to Home</div>
+    <p>
+        <span class="highlight">Veľká pyramída v Gíze</span>, známa aj ako <span class="highlight">Pyramída Chufu</span>, je najznámejšou a najstaršou z pyramíd na pláni Gíza. Bola postavená pre faraóna <span class="highlight">Chufu</span> okolo roku <span class="highlight">2580 pred naším letopočtom</span> a je jedným z mála zachovaných divov starovekého sveta. 
+    </p>
+    
+    <p>
+        Pyramída mala pôvodne výšku <span class="highlight">146,6 metra</span>, ale dnes meria približne <span class="highlight">138,8 metra</span> v dôsledku erózie a krádeží kameňa. Jej základňa má dĺžku približne <span class="highlight">230,4 metra</span> na každú stranu, čo z nej robí obrovský monument s celkovou plochou okolo <span class="highlight">53 000 m²</span>.
+    </p>
+    
+    <p>
+        Na jej stavbu bolo použité približne <span class="highlight">2,3 milióna kamenných blokov</span>, z ktorých niektoré vážia až <span class="highlight">15 ton</span>. Pyramída slúžila ako hrobka pre faraóna, ktorý veril, že mu pomôže v prechode do posmrtného života. Tento monument je symbolom moci a bohatstva starovekého Egypta a je považovaný za majstrovské dielo architektúry.
+    </p>
+
+    <div class="back" onclick="location.href='home.html'">Späť na domovskú stránku</div>
 
 </body>
 </html>

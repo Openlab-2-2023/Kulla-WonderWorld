@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div 2: Socha Ježiša Krista</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            font-family: 'Georgia', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-y: scroll; 
+            height: 100vh; 
+            text-align: center;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            color: #FFD700; /* Zlatá farba */
+            text-shadow: 2px 2px 4px #000000; /* Tieň textu */
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            padding: 0 20px;
+            line-height: 1.6; 
+        }
+
+        .highlight {
+            color: #FF4500; /* Oranžová farba na zvýraznenie */
+            font-weight: bold;
+        }
+
+        .image-container {
+            margin: 20px 0; 
+            width: 100%; 
+            max-width: 600px; 
+        }
+
+        .back {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #f0f0f0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .back:hover {
+            background-color: #555;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Div 2: Socha Ježiša Krista v Rio de Janeiro</h1>
+    
+    <div class="image-container">
+        <img src="your-image-url-here.jpg" alt="Socha Ježiša Krista" style="width: 100%; border-radius: 10px;">
+    </div>
+
+    <p>
+        <span class="highlight">Socha Ježiša Krista</span>, známa aj ako <span class="highlight">Cristo Redentor</span>, sa nachádza na vrchole hory Corcovado v Rio de Janeiro. Bola dokončená v roku <span class="highlight">1931</span> a je jedným z najznámejších symbolov Brazílie.
+    </p>
+    
+    <p>
+        Socha meria <span class="highlight">30 metrov</span> a s podstavcom dosahuje výšku <span class="highlight">38 metrov</span>. Je vyrobená z betónu a žuly a zobrazuje Krista s otvorenými rukami, čo symbolizuje prijatie a pokoj.
+    </p>
+    
+    <p>
+        Cristo Redentor je považovaná za jeden z novodobých siedmich divov sveta a je zapísaná na zozname svetového dedičstva UNESCO. Každoročne pritiahne milióny návštevníkov, ktorí prichádzajú obdivovať jej majestátnosť a panoramatický výhľad na mesto.
+    </p>
+
+    <div class="back" onclick="location.href='home.html'">Späť na domovskú stránku</div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div 7: Tádž Mahal</title>
+    <style>
+        body {
+            background-color: #2a2a2a;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            text-align: center;
+            overflow-y: scroll;
+            padding: 20px;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: subtleFloat 3s ease-in-out infinite;
+        }
+
+        p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            padding: 0 20px;
+            line-height: 1.5; 
+        }
+
+        .highlight {
+            color: #FF5733; 
+            font-weight: bold;
+        }
+
+        .image-container {
+            margin: 20px 0;
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #FFC300; 
+            border-radius: 10px; 
+            overflow: hidden; 
+        }
+
+        .image-container img {
+            width: 100%; 
+            transition: transform 0.3s; 
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05); 
+        }
+
+        .back {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #444;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .back:hover {
+            background-color: #666;
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Div 7: Tádž Mahal</h1>
+    
+    <div class="image-container">
+        <img src="your-image-url-here.jpg" alt="Tádž Mahal">
+    </div>
+
+    <p>
+        <span class="highlight">Tádž Mahal</span> je nádherná hrobka nachádzajúca sa v Agre v Indii, postavená v 17. storočí. Bol postavený na počesť Mughalského cisára Šáh Džahána ako hrobka pre jeho milovanú manželku Mumtáz Mahal.
+    </p>
+    
+    <p>
+        Tádž Mahal je známy svojou unikátnou architektúrou, ktorá kombinuje prvky islamskej, perzskej, indickej a osmanskej architektúry. Jeho biela mramorová konštrukcia je obklopená krásnymi záhradami a vodnými kanálmi, čo vytvára atmosféru pokoja a harmónie.
+    </p>
+    
+    <p>
+        Tádž Mahal bol zaradený na zoznam svetového dedičstva UNESCO a je považovaný za jeden z najkrajších príkladov architektúry na svete. Ročne pritahuje milióny turistov a zostáva symbolom lásky a oddanosti.
+    </p>
+
+    <div class="back" onclick="location.href='home.html'">Späť na domovskú stránku</div>
+
+</body>
+</html>

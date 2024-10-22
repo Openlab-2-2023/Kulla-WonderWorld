@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div 4: Machu Picchu</title>
+    <style>
+        body {
+            background-color: #2a2a2a;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow-y: scroll;
+            padding: 20px;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: subtleFloat 3s ease-in-out infinite;
+        }
+
+        p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            padding: 0 20px;
+            line-height: 1.5; 
+        }
+
+        .highlight {
+            color: #FF5733; 
+            font-weight: bold;
+        }
+
+        .image-container {
+            margin: 20px 0;
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #FFC300; 
+            border-radius: 10px; 
+            overflow: hidden; 
+        }
+
+        .image-container img {
+            width: 100%; 
+            transition: transform 0.3s; 
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05); 
+        }
+
+        .back {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #444;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .back:hover {
+            background-color: #666;
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Div 4: Machu Picchu</h1>
+    
+    <div class="image-container">
+        <img src="your-image-url-here.jpg" alt="Machu Picchu">
+    </div>
+
+    <p>
+        <span class="highlight">Machu Picchu</span> je starobylé incké mesto nachádzajúce sa v Andách v Peru. Toto fascinujúce miesto bolo postavené v 15. storočí a patrí medzi najznámejšie turistické atrakcie na svete.
+    </p>
+    
+    <p>
+        S nadmorskou výškou približne 2 430 metrov nad morom je Machu Picchu známe svojimi ohromujúcimi terasami a precízne postavenými kamenmi. Mesto bolo objavené v roku 1911 americkým bádateľom Hiramom Binghamom a odvtedy sa stalo symbolom inckého inžinierstva.
+    </p>
+    
+    <p>
+        Machu Picchu sa považuje za <span class="highlight">jedno z nových siedmich divov sveta</span> a v roku 1983 bolo zapísané na zoznam svetového dedičstva UNESCO. Je známe svojou krásnou prírodou a bohatou kultúrnou históriou.
+    </p>
+
+    <div class="back" onclick="location.href='home.html'">Späť na domovskú stránku</div>
+
+</body>
+</html>
