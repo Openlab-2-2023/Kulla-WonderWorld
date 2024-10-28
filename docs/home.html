@@ -1,146 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wonder World</title>
+    <title>Celestial Wonders</title>
     <style>
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background: linear-gradient(135deg, #0d0d0d 0%, #262626 100%);
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', serif;
+            background-color: #0d0d0d;
+            color: #f5f5f5;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
-        h1 {
-            margin-bottom: 50px;
-            font-size: 4rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            font-family: 'Poppins', sans-serif;
-            color: #fff;
-            text-transform: uppercase;
-            text-align: center;
-            animation: fadeIn 1s ease forwards;
-        }
-
-        /* Grid layout for buttons */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            width: 80%;
-            justify-items: center;
-        }
-
-        /* Button styles */
-        .button {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 20px;
-            font-size: 1.5rem;
-            font-weight: 500;
-            border-radius: 12px;
-            text-align: center;
-            width: 250px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        /* Advanced hover effect */
-        .button::before {
-            content: '';
+        body::before {
+            content: "";
             position: absolute;
-            top: 100%;
+            top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.1);
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent), 
+                        url('path-to-your-luxury-background.jpg') no-repeat center center/cover;
+            opacity: 0.2;
             z-index: -1;
-            transition: top 0.3s ease;
         }
 
-        .button:hover::before {
-            top: 0;
+        header {
+            text-align: center;
+            margin-top: 1.5em;
+            margin-bottom: 2em;
+            animation: fadeIn 2s ease;
         }
 
-        .button:hover {
-            transform: translateY(-5px);
-            background-color: #333333;
+        header h1 {
+            font-size: 4em;
+            color: #e6e6e6;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.2);
         }
 
-      
-        .contact-us {
-            margin-top: 40px;
-            color: #cccccc;
-            text-decoration: underline;
+        header p {
+            font-size: 1.5em;
+            color: #bbbbbb;
+            margin-top: 0.5em;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5em;
+            justify-content: center;
+            margin-top: 2em;
+        }
+
+        .wonder-button {
+            padding: 1.2em 2.5em;
+            font-size: 1.3em;
+            color: #f5f5f5;
+            background: linear-gradient(145deg, #1e1e1e, #111);
+            border: 2px solid #8c8c8c;
+            border-radius: 15px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .wonder-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 15px 5px rgba(200, 200, 255, 0.5);
             cursor: pointer;
-            font-size: 1.2rem;
         }
 
-        .contact-us:hover {
-            color: white;
+        .wonder-button::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 60%);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease;
         }
 
-        
+        .wonder-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .dialog {
+            font-size: 1.3em;
+            color: #e0e0e0;
+            text-align: center;
+            margin-top: 3em;
+            font-style: italic;
+            transition: opacity 0.5s ease;
+        }
+
+        .content-container {
+            max-width: 1000px;
+            padding: 2em;
+            margin: 0 5%;
+            color: #dcdcdc;
+            font-size: 1.3em;
+            line-height: 1.8;
+            text-align: justify;
+            overflow-y: auto;
+        }
+
+        .content-container p {
+            margin-bottom: 1.5em;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .content-container p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlight {
+            color: #e6e6ff;
+            font-weight: bold;
+        }
+
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-            }
-
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-
-            .button {
-                width: 100%;
-            }
+        footer {
+            margin-top: 2em;
+            padding: 1em 0;
+            text-align: center;
+            color: #888;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Celestial Wonders</h1>
+        <p>Objavte krásy a históriu najúžasnejších stavieb sveta.</p>
+    </header>
+    
+    <main>
+        <div class="button-container">
+            <a href="wonder1.html" class="wonder-button" onmouseover="showRandomMessage()">Div 1</a>
+            <a href="wonder2.html" class="wonder-button" onmouseover="showRandomMessage()">Div 2</a>
+            <a href="wonder3.html" class="wonder-button" onmouseover="showRandomMessage()">Div 3</a>
+            <a href="wonder4.html" class="wonder-button" onmouseover="showRandomMessage()">Div 4</a>
+            <a href="wonder5.html" class="wonder-button" onmouseover="showRandomMessage()">Div 5</a>
+            <a href="wonder6.html" class="wonder-button" onmouseover="showRandomMessage()">Div 6</a>
+            <a href="wonder7.html" class="wonder-button" onmouseover="showRandomMessage()">Div 7</a>
+        </div>
 
-    <h1>Objavte divy sveta!</h1>
+        <div class="dialog" id="dialog-text">Kliknite na div a objavte jeho príbeh...</div>
 
-    <!-- Grid container for wonders -->
-    <div class="grid-container">
-        <div class="button" onclick="location.href='wonder1.html'">Veľká pyramída v Gíze</div>
-        <div class="button" onclick="location.href='wonder2.html'">Socha Ježiša Krista</div>
-        <div class="button" onclick="location.href='wonder3.html'">Veľký čínsky múr</div>
-        <div class="button" onclick="location.href='wonder4.html'">Machu Picchu</div>
-        <div class="button" onclick="location.href='wonder5.html'">Petra</div>
-        <div class="button" onclick="location.href='wonder6.html'">Koloseum</div>
-        <div class="button" onclick="location.href='wonder7.html'">Tádž Mahal</div>
-    </div>
+        <div class="content-container">
+            <p>
+                Staroveké <span class="highlight">divy sveta</span> boli úžasné stavby symbolizujúce <span class="highlight">moc</span>, <span class="highlight">kreativitu</span> a <span class="highlight">odvahu</span>. Každý z nich, od <span class="highlight">Veľkej pyramídy v Gíze</span> po <span class="highlight">Babylonské záhrady</span>, zanechal v histórii nezmazateľnú stopu.
+            </p>
+            <p>
+                Tieto miesta spájajú <span class="highlight">históriu</span> a <span class="highlight">mystiku</span>, ponúkajú pohľad na schopnosti ľudstva, jeho túžbu po niečom väčšom a trvalom. Objavte ich príbehy, fascinujúce legendy a prežite krásu, ktorá pretrváva cez stáročia.
+            </p>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2024 7 Divov Sveta</p>
+    </footer>
 
-    <!-- Contact Us at the bottom -->
-    <div class="contact-us" onclick="location.href='contact.html'">Contact Us</div>
+    <script>
+        const dialogText = document.getElementById("dialog-text");
+        const messages = [
+            "Kliknite na div a objavte jeho príbeh...",
+            "Ktorý div vás uchváti najviac?",
+            "Každý div má svoju legendu. Objavte ju!",
+            "Cesta k najväčším tajomstvám čaká...",
+            "Nechajte sa unášať krásami sveta...",
+            "Objavte veľkolepé zázraky starovekého sveta...",
+            "Legendy a histórie čakajú len na vás..."
+        ];
 
+        let lastMessageIndex = -1;
+
+        function showRandomMessage() {
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * messages.length);
+            } while (randomIndex === lastMessageIndex);
+            lastMessageIndex = randomIndex;
+            const newMessage = messages[randomIndex];
+
+            dialogText.style.opacity = 0;
+            
+            setTimeout(() => {
+                dialogText.textContent = newMessage;
+                dialogText.style.opacity = 1;
+            }, 500);
+        }
+
+        const paragraphs = document.querySelectorAll(".content-container p");
+
+        function revealOnScroll() {
+            const windowHeight = window.innerHeight;
+
+            paragraphs.forEach(paragraph => {
+                const positionFromTop = paragraph.getBoundingClientRect().top;
+                
+                if (positionFromTop - windowHeight <= -100) {
+                    paragraph.classList.add("visible");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+
+       
+        revealOnScroll();
+    </script>
 </body>
 </html>

@@ -3,95 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Div 1</title>
+    <title>Veľká pyramída v Gíze</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #2a2a2a;
-            color: white;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Georgia', serif;
+            color: #f5f5f5;
+            background: linear-gradient(135deg, #1c1c1e, #3a3a3c);
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            overflow-y: scroll; 
-            height: 100vh; 
+            overflow-x: hidden;
+        }
+
+        header {
             text-align: center;
-            animation: fadeIn 1s ease forwards;
+            padding: 2em;
+            background: rgba(20, 20, 20, 0.8);
+            width: 100%;
+            position: relative;
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            animation: subtleFloat 3s ease-in-out infinite;
+        header h1 {
+            font-size: 3em;
+            color: #e3e3e3;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            margin-bottom: 0.5em;
         }
 
-        p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            padding: 0 20px;
-            line-height: 1.5; 
+        header p {
+            font-size: 1.2em;
+            color: #bbbbbb;
         }
 
-        .highlight {
-            color: #1E90FF; 
-            font-weight: bold;
+        .music-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #ffffff;
         }
 
         .image-container {
-            margin: 20px 0; 
-            width: 100%; 
-            max-width: 600px; 
+            width: 90%;
+            max-width: 800px;
+            margin: 2em auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
-        .back {
-            margin-top: 30px;
-            padding: 10px 20px;
-            background-color: #444;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .image-container.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .back:hover {
-            background-color: #666;
+        .text-container {
+            max-width: 800px;
+            margin: 1.5em 5%;
+            padding: 2em;
+            background: rgba(34, 34, 34, 0.7);
+            color: #e6e6e6;
+            font-size: 1.3em;
+            line-height: 1.8;
+            text-align: justify;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
-        
-        @keyframes subtleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        .text-container.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .highlight-orange {
+            color: #ffa500;
+            font-weight: bold;
         }
 
+        .highlight-blue {
+            color: #00bfff;
+            font-weight: bold;
+        }
+
+        .map-container {
+            max-width: 800px;
+            width: 90%;
+            margin: 3em auto;
+            border-radius: 15px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .map-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            padding: 1.5em 0;
+            text-align: center;
+            color: #888;
+            font-size: 0.9em;
+            margin-top: auto;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Veľká pyramída v Gíze</h1>
+        <p>Objavte najväčší a najstarší div starovekého sveta</p>
+        <span class="music-icon" id="music-icon" onclick="toggleMusic()">🔈</span>
+    </header>
 
-    <h1>Div 1: Veľká pyramída v Gíze</h1>
-    
-    <div class="image-container">
-        <img src="../images/pyramidy-v-gize-2_1200x0.jpg" alt="Veľká pyramída v Gíze" style="width: 100%; border-radius: 10px;">
+    <div class="image-container" id="image-container">
+        <img src="../images/pyramidy-v-gize-2_1200x0.jpg" alt="Veľká pyramída v Gíze" loading="lazy">
     </div>
 
-    <p>
-        <span class="highlight">Veľká pyramída v Gíze</span>, známa aj ako <span class="highlight">Pyramída Chufu</span>, je najznámejšou a najstaršou z pyramíd na pláni Gíza. Bola postavená pre faraóna <span class="highlight">Chufu</span> okolo roku <span class="highlight">2580 pred naším letopočtom</span> a je jedným z mála zachovaných divov starovekého sveta. 
-    </p>
-    
-    <p>
-        Pyramída mala pôvodne výšku <span class="highlight">146,6 metra</span>, ale dnes meria približne <span class="highlight">138,8 metra</span> v dôsledku erózie a krádeží kameňa. Jej základňa má dĺžku približne <span class="highlight">230,4 metra</span> na každú stranu, čo z nej robí obrovský monument s celkovou plochou okolo <span class="highlight">53 000 m²</span>.
-    </p>
-    
-    <p>
-        Na jej stavbu bolo použité približne <span class="highlight">2,3 milióna kamenných blokov</span>, z ktorých niektoré vážia až <span class="highlight">15 ton</span>. Pyramída slúžila ako hrobka pre faraóna, ktorý veril, že mu pomôže v prechode do posmrtného života. Tento monument je symbolom moci a bohatstva starovekého Egypta a je považovaný za majstrovské dielo architektúry.
-    </p>
+    <div class="text-container" id="text-container">
+        <p><span class="highlight-orange">Veľká pyramída v Gíze</span> je jedným zo siedmich divov starovekého sveta a stojí v púšti už viac ako <span class="highlight-blue">4 500 rokov</span>. Je to najstarší a najväčší zo všetkých egyptských pyramíd, považovaný za skutočný <span class="highlight-orange">technický zázrak</span> svojej doby.</p>
+        
+        <p>Stavba pyramídy bola uskutočnená na príkaz faraóna <span class="highlight-blue">Chufua</span>, ktorý chcel vytvoriť <span class="highlight-orange">večnú hrobku</span> s cieľom ukázať svoju moc a veľkoleposť. Na jej dokončenie bolo potrebné obrovské množstvo zdrojov a pracovnej sily, čo dodnes fascinuje historikov a archeológov.</p>
+        
+        <p>Pyramída bola pôvodne pokrytá <span class="highlight-blue">bielym vápencom</span>, ktorý odrážal slnečné svetlo a spôsoboval, že stavba doslova žiarila na púšti. Dnes už vápenec chýba, ale pyramída si zachovala svoju <span class="highlight-orange">impozantnú prítomnosť</span> a zostáva dominantou krajiny.</p>
+        
+        <p>Každý kameň v pyramíde váži niekoľko ton a stále sa vedie diskusia o tom, ako boli tieto obrovské bloky prepravované a presne montované na svoje miesto. Tento <span class="highlight-blue">mystérium stavby</span> je pre archeológov a vedcov stále predmetom fascinácie.</p>
+        
+        <p>Dnes je <span class="highlight-orange">pyramída v Gíze</span> symbolom trvalého dedičstva Egypta. Každoročne ju navštívia milióny turistov a výskumníkov z celého sveta, ktorí sa chcú pokloniť pamiatke tejto <span class="highlight-blue">veľkolepej civilizácie</span>.</p>
+    </div>
 
-    <div class="back" onclick="location.href='home.html'">Späť na domovskú stránku</div>
+    <div class="map-container" id="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.869635030869!2d31.13130211511768!3d29.97923418191145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14584587b88ce57d%3A0x4c86b3aadd4e6ebf!2sGreat%20Pyramid%20of%20Giza!5e0!3m2!1sen!2sus!4v1687123456789!5m2!1sen!2sus" 
+            width="100%" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
 
+    <footer>
+        <p>© 2024 Celestial Wonders - Veľká pyramída v Gíze</p>
+    </footer>
+
+    <audio id="background-music" loop>
+        <source src="../audio/Dark Ambient Atmospheric Egyptian Fantasy Music - Hall of Ma'at.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const musicIcon = document.getElementById('music-icon');
+        const backgroundMusic = document.getElementById('background-music');
+        const mapContainer = document.getElementById('map-container');
+        const textContainer = document.getElementById('text-container');
+        const imageContainer = document.getElementById('image-container');
+        let musicPlaying = false;
+
+        function toggleMusic() {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play().then(() => {
+                    musicIcon.textContent = "🔊";
+                    musicPlaying = true;
+                }).catch(error => {
+                    console.log("Autoplay is blocked, music will start after user interaction.");
+                });
+            } else {
+                backgroundMusic.pause();
+                musicIcon.textContent = "🔈";
+                musicPlaying = false;
+            }
+        }
+
+        function revealOnScroll(element) {
+            const windowHeight = window.innerHeight;
+            const positionFromTop = element.getBoundingClientRect().top;
+
+            if (positionFromTop - windowHeight <= -100) {
+                element.classList.add("visible");
+            }
+        }
+
+        window.addEventListener("scroll", () => {
+            revealOnScroll(mapContainer);
+            revealOnScroll(textContainer);
+            revealOnScroll(imageContainer);
+        });
+
+        revealOnScroll(mapContainer);
+        revealOnScroll(textContainer);
+        revealOnScroll(imageContainer);
+    </script>
 </body>
 </html>

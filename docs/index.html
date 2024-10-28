@@ -13,6 +13,7 @@
             align-items: center;
             font-family: 'Cursive', 'Arial', sans-serif;
             overflow: hidden;
+            transition: background-color 1s ease-in-out;
         }
 
         .center-text {
@@ -28,10 +29,9 @@
             animation: subtleFloat 3s ease-in-out infinite;
         }
 
-      
         .center-text:hover {
             letter-spacing: 15px;
-            transform: translateY(-10px) rotate(1deg);
+            transform: translateY(-10px);
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
         }
 
@@ -39,17 +39,35 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
         }
+
+        .invert-colors {
+            animation: invertAnimation 1s forwards;
+        }
+
+        @keyframes invertAnimation {
+            0% {
+                background-color: #000;
+                color: white;
+            }
+            100% {
+                background-color: #fff;
+                color: black;
+            }
+        }
     </style>
 </head>
 <body>
 
-    
-    <div class="center-text" id="wonderWorld">Wonder World</div>
+    <div class="center-text" id="wonderWorld">Celestial Wonders</div>
 
     <script>
-        
         document.getElementById('wonderWorld').addEventListener('click', function() {
-            window.location.href = "home.html";
+            document.body.classList.add('invert-colors');
+            document.getElementById('wonderWorld').classList.add('invert-colors');
+            
+            setTimeout(function() {
+                window.location.href = "home.html";
+            }, 1000);
         });
     </script>
 
