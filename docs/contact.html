@@ -116,23 +116,23 @@
 
     <h1>Contact Us</h1>
 
-    <!-- Contact form -->
+    
     <form id="contactForm">
         <input type="text" placeholder="Your Name" required>
         <input type="email" placeholder="Your Email" required>
         <textarea rows="5" placeholder="Your Message"></textarea>
-        <div class="submit-btn" onclick="sendMessage()">Send Message</div>
+        <div class="submit-btn" onclick="sendMessage()">Poslať správu</div>
     </form>
 
-    <!-- Modal for confirmation -->
+   
     <div id="modal" class="modal">
         <div class="modal-content">
-            <p>Message has been sent!</p>
-            <div class="close-btn" onclick="closeModal()">Close</div>
+            <p>Spŕava bola odoslaná. Ďakujeme!</p>
+            <div class="close-btn" onclick="closeModal()">Zatvoriť</div>
         </div>
     </div>
 
-    <div class="back" onclick="location.href='home.html'">Back to Home</div>
+    <div class="back" onclick="location.href='home.html'">Späť</div>
 
     <script>
         function sendMessage() {
