@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dotazník pre Stempina</title>
+</head>
+<body>
+    <h1>Dotazník pre Stempina</h1>
+    <form>
+        <label>Celé meno: <input type="text" name="fullname" required></label><br><br>
+
+        <label>Dátum narodenia: <input type="date" name="dob" required></label><br><br>
+
+        <label>Pohlavie: 
+            <input type="radio" name="gender" value="male"> Muž
+            <input type="radio" name="gender" value="female"> Žena
+            <input type="radio" name="gender" value="other"> Bisexuál
+            <input type="radio" name="gender" value="other"> Černoch
+            <input type="radio" name="gender" value="other"> Stempin
+        </label><br><br>
+
+        <label>Emailová adresa: <input type="email" name="email" required></label><br><br>
+
+        <label>Telefónne číslo: <input type="tel" name="phone"></label><br><br>
+
+        <label>Výška : <input type="number" name="height" min="0" required></label><br><br>
+
+        <label>Hmotnosť (kg): <input type="number" name="weight" min="0" required></label><br><br>
+
+        <label>Fajčíš gas? 
+            <input type="radio" name="smoke" value="yes"> Áno
+            <input type="radio" name="smoke" value="yes"> Áno
+        </label><br><br>
+
+        <label>Pijete často alkohol? Stempin? Piješ alkohol? hajzel
+            <input type="radio" name="alcohol" value="yes"> Áno
+            <input type="radio" name="alcohol" value="no"> Nie
+            <input type="radio" name="alcohol" value="maybe"> Možno (130% Áno)
+        </label><br><br>
+
+        <label>Alergie: <input type="text" name="allergies" placeholder="Uveďte známe alergie"></label><br><br>
+
+        <label>Aktuálne lieky: <input type="text" name="medications" placeholder="Uveďte aktuálne lieky"></label><br><br>
+
+        <label>Meno kontaktnej osoby v prípade núdze: <input type="text" name="emergency_contact_name" required></label><br><br>
+
+        <label>Telefón kontaktnej osoby: <input type="tel" name="emergency_contact_phone" required></label><br><br>
+
+        <label>Iné zdravotné problémy alebo poznámky: <textarea name="other_issues" rows="4" cols="50" placeholder="Popíšte ďalšie zdravotné problémy alebo poznámky"></textarea></label><br><br>
+
+        <input type="submit" value="Odoslať">
+    </form>
+</body>
+</html>
