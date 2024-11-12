@@ -19,6 +19,33 @@
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Hviezdne pozadie */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            width: 2px;
+            height: 2px;
+            opacity: 0.8;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.6; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         body::before {
@@ -148,6 +175,8 @@
     </style>
 </head>
 <body>
+    <div class="stars" id="stars"></div>
+
     <header>
         <h1>Celestial Wonders</h1>
         <p>Objavte krásy a históriu najúžasnejších stavieb sveta.</p>
@@ -182,52 +211,15 @@
     </footer>
 
     <script>
-        const dialogText = document.getElementById("dialog-text");
-        const messages = [
-            "Kliknite na div a objavte jeho príbeh...",
-            "Ktorý div vás uchváti najviac?",
-            "Každý div má svoju legendu. Objavte ju!",
-            "Cesta k najväčším tajomstvám čaká...",
-            "Nechajte sa unášať krásami sveta...",
-            "Objavte veľkolepé zázraky starovekého sveta...",
-            "Legendy a histórie čakajú len na vás..."
-        ];
-
-        let lastMessageIndex = -1;
-
-        function showRandomMessage() {
-            let randomIndex;
-            do {
-                randomIndex = Math.floor(Math.random() * messages.length);
-            } while (randomIndex === lastMessageIndex);
-            lastMessageIndex = randomIndex;
-            const newMessage = messages[randomIndex];
-
-            dialogText.style.opacity = 0;
-            
-            setTimeout(() => {
-                dialogText.textContent = newMessage;
-                dialogText.style.opacity = 1;
-            }, 500);
+        // Skript pre hviezdne pozadie
+        const starsContainer = document.getElementById("stars");
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            starsContainer.appendChild(star);
         }
-
-        const paragraphs = document.querySelectorAll(".content-container p");
-
-        function revealOnScroll() {
-            const windowHeight = window.innerHeight;
-
-            paragraphs.forEach(paragraph => {
-                const positionFromTop = paragraph.getBoundingClientRect().top;
-                
-                if (positionFromTop - windowHeight <= -100) {
-                    paragraph.classList.add("visible");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", revealOnScroll);
-
-        revealOnScroll();
     </script>
 </body>
 </html>

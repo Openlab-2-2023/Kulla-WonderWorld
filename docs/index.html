@@ -14,6 +14,7 @@
             font-family: 'Cursive', 'Arial', sans-serif;
             overflow: hidden;
             transition: background-color 1s ease-in-out;
+            position: relative;
         }
 
         .center-text {
@@ -27,6 +28,7 @@
             cursor: pointer;
             transition: all 0.5s ease-in-out;
             animation: subtleFloat 3s ease-in-out infinite;
+            z-index: 1;
         }
 
         .center-text:hover {
@@ -54,9 +56,49 @@
                 color: black;
             }
         }
+
+        /* Starry background */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.6; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
     </style>
 </head>
 <body>
+
+    <div class="stars">
+        <!-- Generating random stars with JavaScript -->
+        <script>
+            const starContainer = document.querySelector('.stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                starContainer.appendChild(star);
+            }
+        </script>
+    </div>
 
     <div class="center-text" id="wonderWorld">Celestial Wonders</div>
 
