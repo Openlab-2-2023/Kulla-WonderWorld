@@ -13,16 +13,17 @@
 
         body {
             font-family: 'Georgia', serif;
-            background-color: #0d0d0d;
+            background: radial-gradient(circle, #0d0d0d, #1a1a1a);
             color: #f5f5f5;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
-            position: relative;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 2rem;
+            overflow: hidden;
         }
 
-        /* Hviezdne pozadie */
         .stars {
             position: fixed;
             width: 100%;
@@ -48,172 +49,144 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        body::before {
-            content: "";
+        .about-link {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent), 
-                        url('path-to-your-luxury-background.jpg') no-repeat center center/cover;
-            opacity: 0.2;
-            z-index: -1;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            color: #f5f5f5;
+            background: linear-gradient(145deg, #2d2d44, #1a1a2e);
+            border: 2px solid #444466;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .about-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 10px rgba(200, 200, 255, 0.5);
+            background: linear-gradient(145deg, #3b3b5e, #282840);
         }
 
         header {
             text-align: center;
-            margin-top: 1.5em;
-            margin-bottom: 2em;
-            animation: fadeIn 2s ease;
+            margin-bottom: 2rem;
         }
 
         header h1 {
-            font-size: 4em;
+            font-size: 3.5rem;
             color: #e6e6e6;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.5rem;
         }
 
         header p {
-            font-size: 1.5em;
+            font-size: 1.2rem;
             color: #bbbbbb;
-            margin-top: 0.5em;
+            max-width: 600px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .quote-container {
+            font-size: 1.4rem;
+            color: #e0e0e0;
+            text-align: center;
+            margin-top: 2rem;
+            transition: opacity 0.3s ease;
+            opacity: 0;
         }
 
         .button-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5em;
+            gap: 1rem;
             justify-content: center;
-            margin-top: 2em;
+            margin-top: 2rem;
         }
 
         .wonder-button {
-            padding: 1.2em 2.5em;
-            font-size: 1.3em;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
             color: #f5f5f5;
-            background: linear-gradient(145deg, #1e1e1e, #111);
+            background: linear-gradient(145deg, #292929, #1f1f1f);
             border: 2px solid #8c8c8c;
-            border-radius: 15px;
+            border-radius: 10px;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .wonder-button:hover {
-            transform: translateY(-5px) scale(1.05);
+            transform: translateY(-5px);
             box-shadow: 0 0 15px 5px rgba(200, 200, 255, 0.5);
             cursor: pointer;
         }
 
-        .wonder-button::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 60%);
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.5s ease;
-        }
-
-        .wonder-button:hover::before {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .dialog {
-            font-size: 1.3em;
-            color: #e0e0e0;
-            text-align: center;
-            margin-top: 3em;
-            font-style: italic;
-            transition: opacity 0.5s ease;
-        }
-
-        .content-container {
-            max-width: 1000px;
-            padding: 2em;
-            margin: 0 5%;
-            color: #dcdcdc;
-            font-size: 1.3em;
-            line-height: 1.8;
-            text-align: justify;
-            overflow-y: auto;
-        }
-
-        .content-container p {
-            margin-bottom: 1.5em;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .content-container p.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .highlight {
-            color: #e6e6ff;
-            font-weight: bold;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         footer {
-            margin-top: 2em;
-            padding: 1em 0;
+            margin-top: 2rem;
             text-align: center;
             color: #888;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
     <div class="stars" id="stars"></div>
 
+    <a href="about.html" class="about-link">About Us</a>
+
     <header>
         <h1>Celestial Wonders</h1>
-        <p>Objavte krásy a históriu najúžasnejších stavieb sveta.</p>
+        <p>
+            Táto stránka vám prináša fascinujúci pohľad na niektoré z najúžasnejších stavieb sveta. Objavte ich krásu, význam a miesto v histórii.
+        </p>
     </header>
-    
-    <main>
-        <div class="button-container">
-            <a href="wonder1.html" class="wonder-button" onmouseover="showRandomMessage()">Div 1</a>
-            <a href="wonder2.html" class="wonder-button" onmouseover="showRandomMessage()">Div 2</a>
-            <a href="wonder3.html" class="wonder-button" onmouseover="showRandomMessage()">Div 3</a>
-            <a href="wonder4.html" class="wonder-button" onmouseover="showRandomMessage()">Div 4</a>
-            <a href="wonder5.html" class="wonder-button" onmouseover="showRandomMessage()">Div 5</a>
-            <a href="wonder6.html" class="wonder-button" onmouseover="showRandomMessage()">Div 6</a>
-            <a href="wonder7.html" class="wonder-button" onmouseover="showRandomMessage()">Div 7</a>
-            <a href="contact.html" class="wonder-button">Contact Us</a>
-        </div>
 
-        <div class="dialog" id="dialog-text">Kliknite na div a objavte jeho príbeh...</div>
+    <div class="quote-container" id="quote">"Pripravte sa na objavovanie fascinujúcich miest!"</div>
 
-        <div class="content-container">
-            <p>
-                Staroveké <span class="highlight">divy sveta</span> boli úžasné stavby symbolizujúce <span class="highlight">moc</span>, <span class="highlight">kreativitu</span> a <span class="highlight">odvahu</span>. Každý z nich, od <span class="highlight">Veľkej pyramídy v Gíze</span> po <span class="highlight">Babylonské záhrady</span>, zanechal v histórii nezmazateľnú stopu.
-            </p>
-            <p>
-                Tieto miesta spájajú <span class="highlight">históriu</span> a <span class="highlight">mystiku</span>, ponúkajú pohľad na schopnosti ľudstva, jeho túžbu po niečom väčšom a trvalom. Objavte ich príbehy, fascinujúce legendy a prežite krásu, ktorá pretrváva cez stáročia.
-            </p>
-        </div>
-    </main>
-    
+    <div class="button-container">
+        <a href="wonder1.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 1</a>
+        <a href="wonder2.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 2</a>
+        <a href="wonder3.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 3</a>
+        <a href="wonder4.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 4</a>
+        <a href="wonder5.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 5</a>
+        <a href="wonder6.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 6</a>
+        <a href="wonder7.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 7</a>
+        <a href="contact.html" class="wonder-button">Contact Us</a>
+    </div>
+
     <footer>
-        <p>© 2024 7 Divov Sveta</p>
+        <p>© 2024 Celestial Wonders</p>
     </footer>
 
     <script>
-        // Skript pre hviezdne pozadie
+        const quotes = [
+            '"Pripravte sa na objavovanie fascinujúcich miest!"',
+            '"Každý div sveta má svoj nezameniteľný príbeh."',
+            '"Objavujte históriu a tajomstvá starovekých civilizácií."',
+            '"Každá stavba rozpráva príbeh odvahy a kreativity."',
+            '"Od pyramíd po sochy – divy sveta inšpirujú aj dnes."',
+            '"Všetky tieto stavby sú symbolom ľudskej vynaliezavosti."',
+            '"Nezmeškajte šancu spoznať najväčšie architektonické zázraky!"'
+        ];
+
+        const quoteContainer = document.getElementById("quote");
+
+        function generateRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteContainer.style.opacity = 0;
+            setTimeout(() => {
+                quoteContainer.textContent = quotes[randomIndex];
+                quoteContainer.style.opacity = 1;
+            }, 300);
+        }
+
         const starsContainer = document.getElementById("stars");
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 100; i++) {
             const star = document.createElement("div");
             star.classList.add("star");
             star.style.top = `${Math.random() * 100}%`;

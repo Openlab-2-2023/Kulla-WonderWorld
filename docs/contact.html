@@ -6,7 +6,7 @@
     <title>Contact Us</title>
     <style>
         body {
-            background: #1b1b1b url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); /* Subtle texture */
+            background: #1b1b1b url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
             color: white;
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -62,9 +62,8 @@
             background-color: #444;
         }
 
-        /* Modal styles */
         .modal {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -116,18 +115,16 @@
 
     <h1>Contact Us</h1>
 
-    
-    <form id="contactForm">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="5" placeholder="Your Message"></textarea>
-        <div class="submit-btn" onclick="sendMessage()">Poslať správu</div>
+    <form id="contactForm" onsubmit="return validateForm(event)">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="submit-btn">Poslať správu</button>
     </form>
 
-   
     <div id="modal" class="modal">
         <div class="modal-content">
-            <p>Spŕava bola odoslaná. Ďakujeme!</p>
+            <p>Správa bola odoslaná. Ďakujeme!</p>
             <div class="close-btn" onclick="closeModal()">Zatvoriť</div>
         </div>
     </div>
@@ -135,7 +132,23 @@
     <div class="back" onclick="location.href='home.html'">Späť</div>
 
     <script>
-        function sendMessage() {
+        function validateForm(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Vyplňte všetky polia pred odoslaním správy.');
+                return false;
+            }
+
+            showModal();
+            return true;
+        }
+
+        function showModal() {
             document.getElementById('modal').style.display = 'flex';
         }
 
