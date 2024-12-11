@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Socha Krista Spasiteľa - Celestial Wonders</title>
+    <title>Socha Krista Spasiteľa</title>
     <style>
         * {
             margin: 0;
@@ -12,148 +12,269 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            color: #f5f5f5;
-            background: linear-gradient(135deg, #1c1c1e, #3a3a3c);
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #e6e6e6;
+            line-height: 1.6;
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            background: rgba(18, 18, 18, 0.95);
+            padding: 10px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            overflow-x: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #e6e6e6;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffa500;
+        }
+
+        .ticket-icon {
+            font-size: 2rem;
+            color: #ffa500;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .ticket-icon:hover {
+            transform: scale(1.2);
+            color: #e09500;
         }
 
         header {
             text-align: center;
-            padding: 2em;
-            background: rgba(20, 20, 20, 0.8);
-            width: 100%;
-        }
-
-        header h1 {
-            font-size: 3em;
-            color: #e3e3e3;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            margin-bottom: 0.5em;
-        }
-
-        header p {
-            font-size: 1.2em;
-            color: #bbbbbb;
-        }
-
-        .image-container {
-            width: 90%;
-            max-width: 800px;
-            margin: 2em auto;
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.5s ease;
-        }
-
-        .image-container:hover {
-            transform: scale(1.02);
-        }
-
-        .image-container img {
-            width: 100%;
-            border-radius: 15px;
-            transition: opacity 0.5s ease;
-        }
-
-        .text-container {
-            max-width: 800px;
-            margin: 1.5em 5%;
-            padding: 2em;
-            background: rgba(34, 34, 34, 0.7);
-            color: #e6e6e6;
-            font-size: 1.3em;
-            line-height: 1.8;
-            text-align: justify;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .text-container.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .highlight {
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        footer {
-            padding: 1.5em 0;
-            text-align: center;
-            color: #888;
-            font-size: 0.9em;
-            margin-top: auto;
-        }
-
-        .map-container {
-            width: 90%;
-            max-width: 800px;
-            margin: 2em auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1c1f26, #23272e);
+            background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+            animation: fadeIn 1.5s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            font-size: 4rem;
+            color: #ffa500;
+            text-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.05);
+        }
+
+        .text-container {
+            background: #1c1f26;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-container h2 {
+            color: #ffa500;
+            margin-bottom: 15px;
+        }
+
+        .text-container p {
+            margin: 15px 0;
+        }
+
+        .highlight {
+            color: #ffa500;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+            position: relative;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background: #23272e;
+            color: #e6e6e6;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            top: -40px;
+            left: 0;
+            white-space: nowrap;
+            z-index: 100;
+            font-size: 0.9rem;
+        }
+
+        .highlight:hover .tooltip {
+            display: block;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 12px;
+            background: #161b22;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .ticket-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: #23272e;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .ticket-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffa500;
+        }
+
+        .ticket-section p {
+            margin-bottom: 20px;
+        }
+
+        .buy-tickets {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ffa500;
+            color: #121212;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease;
+        }
+
+        .buy-tickets:hover {
+            background: #e09500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1c1f26;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #dcdcdc;
         }
     </style>
 </head>
 <body>
-    <header>
+    <nav>
+        <ul>
+            <li><a href="home.html">Domov</a></li>
+            <li><a href="#about">O soche</a></li>
+            <li><a href="#map">Mapa</a></li>
+        </ul>
+        <div class="ticket-icon" onclick="scrollToTickets()">🎟️</div>
+    </nav>
+
+    <header id="home">
         <h1>Socha Krista Spasiteľa</h1>
-        <p>Ikonická dominanta Rio de Janeiro a symbol mieru</p>
+        <p>Symbol nádeje a mieru nad Rio de Janeiro</p>
     </header>
 
-    <div class="image-container">
-        <img src="" alt="Socha Krista Spasiteľa">
-    </div>
+    <section class="content" id="about">
+        <div class="image-container" style="text-align: center; margin: 20px auto;">
+            <img src="images/lepsijesus.jpg" alt="Socha Krista Spasiteľa" style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
+        </div>      
+        </div>
+        <div class="text-container">
+            <h2>O Soche</h2>
+            <p>
+                Socha Krista Spasiteľa je jedným z najznámejších monumentov na svete. Bola dokončená v roku <span class="highlight">1931<span class="tooltip">12. októbra 1931.</span></span> a je symbolom kresťanských hodnôt, mieru a nádeje.
+            </p>
+            <p>
+                Nachádza sa na vrchole hory <span class="highlight">Corcovado<span class="tooltip">Hora s nadmorskou výškou 710 metrov.</span></span> v národnom parku Tijuca. Socha má výšku <span class="highlight">30 metrov<span class="tooltip">Výška samotnej sochy bez podstavca.</span></span> a rozpätie rúk <span class="highlight">28 metrov<span class="tooltip">Ramená rozpažené smerom k mestu Rio de Janeiro.</span></span>. S podstavcom dosahuje celkovú výšku <span class="highlight">38 metrov<span class="tooltip">Výška vrátane 8-metrového podstavca.</span></span>.
+            </p>
+            <p>
+                Táto ikona Brazílie bola navrhnutá francúzskym sochárom <span class="highlight">Paulom Landowským<span class="tooltip">Sochár, ktorý vytvoril návrh Kristovej postavy.</span></span> a postavená pod vedením inžiniera <span class="highlight">Heitora da Silvu Costu<span class="tooltip">Brazílsky inžinier, ktorý dohliadal na stavbu.</span></span>.
+            </p>
+        </div>
+    </section>
 
-    <div class="text-container" id="text-container">
-        <p>
-            <span class="highlight">Socha Krista Spasiteľa</span>, týčiaca sa nad mestom Rio de Janeiro, je jedným z najvýznamnejších symbolov Brazílie a svetovým ikonickým symbolom <span class="highlight">mieru a nádeje</span>. S výškou 30 metrov a rozpaženými rukami pôsobí ako ochranca celého mesta.
-        </p>
-        <p>
-            Táto socha, dokončená v roku <span class="highlight">1931</span>, bola inšpirovaná kresťanskými hodnotami a stala sa jedným z novodobých divov sveta. Je postavená na vrchole hory Corcovado, kde poskytuje nádherný výhľad na Rio de Janeiro a Atlantický oceán.
-        </p>
-        <p>
-            Navštívte toto ikonické miesto a zažite jedinečnú atmosféru pokoja a krásy, ktorú socha Krista Spasiteľa prináša návštevníkom z celého sveta.
-        </p>
-    </div>
-    
-    <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.1931016945024!2d-43.21150228553963!3d-22.95191748499853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f5fb3d7d7e3%3A0x4f8b6f1a473f4a9e!2zQ3Jpc3QgdGhlIFJlZGVlbWVyIENocmlzdG8gbyBSZWRlZW50b3I!5e0!3m2!1sen!2sbr!4v1699821265443!5m2!1sen!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <section class="map-container" id="map">
+        <h2 style="text-align: center; color: #ffa500; margin-bottom: 15px;">Mapa - Socha Krista Spasiteľa</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.1931016945024!2d-43.21150228553963!3d-22.95191748499853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f5fb3d7d7e3%3A0x4f8b6f1a473f4a9e!2zQ3Jpc3QgdGhlIFJlZGVlbWVyIENocmlzdG8gbyBSZWRlZW50b3I!5e0!3m2!1sen!2sbr!4v1699821265443!5m2!1sen!2sbr"></iframe>
+    </section>
+
+    <section class="ticket-section" id="tickets">
+        <h3>Kúpiť lístky</h3>
+        <p>Navštívte Sochu Krista Spasiteľa a zažite jedinečnú atmosféru.</p>
+        <a href="https://www.tripadvisor.com/Attraction_Review-g303506-d554128-Reviews-Corcovado_Christ_the_Redeemer-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html" class="buy-tickets">Kúpiť lístky</a>
+    </section>
 
     <footer>
-        <p>© 2024 Celestial Wonders - Socha Krista Spasiteľa</p>
+        © 2024 Socha Krista Spasiteľa. Všetky práva vyhradené.
     </footer>
 
     <script>
-        const textContainer = document.getElementById('text-container');
-
-        function revealTextOnScroll() {
-            const windowHeight = window.innerHeight;
-            const positionFromTop = textContainer.getBoundingClientRect().top;
-
-            if (positionFromTop - windowHeight <= -100) {
-                textContainer.classList.add("visible");
-            }
+        function scrollToTickets() {
+            document.querySelector('#tickets').scrollIntoView({
+                behavior: 'smooth'
+            });
         }
-
-        window.addEventListener("scroll", revealTextOnScroll);
-        revealTextOnScroll();
     </script>
 </body>
 </html>

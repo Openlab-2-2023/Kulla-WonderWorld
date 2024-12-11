@@ -22,6 +22,7 @@
             min-height: 100vh;
             padding: 2rem;
             overflow: hidden;
+            position: relative;
         }
 
         .stars {
@@ -41,12 +42,17 @@
             width: 2px;
             height: 2px;
             opacity: 0.8;
-            animation: twinkle 2s infinite alternate;
+            animation: twinkle 2s infinite alternate, drift 5s infinite ease-in-out;
         }
 
         @keyframes twinkle {
             0% { opacity: 0.6; transform: scale(0.9); }
             100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
 
         .about-link {
@@ -80,6 +86,13 @@
             color: #e6e6e6;
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
             margin-bottom: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
         }
 
         header p {
@@ -88,15 +101,6 @@
             max-width: 600px;
             line-height: 1.6;
             text-align: center;
-        }
-
-        .quote-container {
-            font-size: 1.4rem;
-            color: #e0e0e0;
-            text-align: center;
-            margin-top: 2rem;
-            transition: opacity 0.3s ease;
-            opacity: 0;
         }
 
         .button-container {
@@ -126,28 +130,118 @@
             cursor: pointer;
         }
 
-        footer {
-            margin-top: 2rem;
+        .quote-container {
+            font-size: 1.4rem;
+            color: #e0e0e0;
             text-align: center;
+            margin-top: 2rem;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .map-container {
+            position: relative;
+            margin: 2rem 0;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .marker {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: red;
+            border-radius: 50%;
+            border: 2px solid white;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+        }
+
+        .marker:hover::after {
+            content: attr(data-name);
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .marker.taj-mahal { top: 58%; left: 67%; }
+        .marker.chichen-itza { top: 40%; left: 30%; }
+        .marker.colosseum { top: 45%; left: 50%; }
+        .marker.machu-picchu { top: 72%; left: 28%; }
+        .marker.petra { top: 49%; left: 58%; }
+        .marker.great-wall { top: 38%; left: 75%; }
+        .marker.christ-redeemer { top: 76%; left: 35%; }
+
+        .counter {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .counter p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+        }
+
+        .counter .count {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #f5f5f5;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 1rem;
             color: #888;
             font-size: 0.9rem;
+        }
+
+        .secret-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(145deg, #292929, #1f1f1f);
+            color: white;
+            border: 2px solid #8c8c8c;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .secret-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(200, 200, 255, 0.5);
         }
     </style>
 </head>
 <body>
     <div class="stars" id="stars"></div>
-
-    <a href="about.html" class="about-link">About Us</a>
-
+    <a href="about.html" class="about-link">O nás</a>
     <header>
         <h1>Celestial Wonders</h1>
-        <p>
-            Táto stránka vám prináša fascinujúci pohľad na niektoré z najúžasnejších stavieb sveta. Objavte ich krásu, význam a miesto v histórii.
-        </p>
+        <p>Táto stránka vám prináša fascinujúci pohľad na niektoré z najúžasnejších stavieb sveta. Objavte ich krásu, význam a miesto v histórii.</p>
     </header>
-
-    <div class="quote-container" id="quote">"Pripravte sa na objavovanie fascinujúcich miest!"</div>
-
     <div class="button-container">
         <a href="wonder1.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 1</a>
         <a href="wonder2.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 2</a>
@@ -156,35 +250,28 @@
         <a href="wonder5.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 5</a>
         <a href="wonder6.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 6</a>
         <a href="wonder7.html" class="wonder-button" onmouseover="generateRandomQuote()">Wonder 7</a>
-        <a href="contact.html" class="wonder-button">Contact Us</a>
+        <a href="contact.html" class="wonder-button">Kontaktujte nás</a>
+    </div>    
+    <div class="quote-container" id="quote"></div>
+    <div class="map-container">
+        <img src="https://img.freepik.com/free-vector/worldwide-global-map-outline-black-background_1017-46153.jpg" alt="Mapa sveta" class="map-image">
+        <div class="marker taj-mahal" data-name="Taj Mahal"></div>
+        <div class="marker chichen-itza" data-name="Chichen Itza"></div>
+        <div class="marker colosseum" data-name="Koloseum"></div>
+        <div class="marker machu-picchu" data-name="Machu Picchu"></div>
+        <div class="marker petra" data-name="Petra"></div>
+        <div class="marker great-wall" data-name="Veľký Čínsky Múr"></div>
+        <div class="marker christ-redeemer" data-name="Kristus Spasiteľ"></div>
     </div>
-
+    <div class="counter">
+        <p>Počet návštevníkov, ktorí navštívili divy sveta:</p>
+        <span class="count" id="counter">0</span>
+    </div>
     <footer>
         <p>© 2024 Celestial Wonders</p>
     </footer>
-
+    <a href="secret.html" class="secret-button">?</a>
     <script>
-        const quotes = [
-            '"Pripravte sa na objavovanie fascinujúcich miest!"',
-            '"Každý div sveta má svoj nezameniteľný príbeh."',
-            '"Objavujte históriu a tajomstvá starovekých civilizácií."',
-            '"Každá stavba rozpráva príbeh odvahy a kreativity."',
-            '"Od pyramíd po sochy – divy sveta inšpirujú aj dnes."',
-            '"Všetky tieto stavby sú symbolom ľudskej vynaliezavosti."',
-            '"Nezmeškajte šancu spoznať najväčšie architektonické zázraky!"'
-        ];
-
-        const quoteContainer = document.getElementById("quote");
-
-        function generateRandomQuote() {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            quoteContainer.style.opacity = 0;
-            setTimeout(() => {
-                quoteContainer.textContent = quotes[randomIndex];
-                quoteContainer.style.opacity = 1;
-            }, 300);
-        }
-
         const starsContainer = document.getElementById("stars");
         for (let i = 0; i < 100; i++) {
             const star = document.createElement("div");
@@ -193,6 +280,38 @@
             star.style.left = `${Math.random() * 100}%`;
             starsContainer.appendChild(star);
         }
+
+        const quotes = [
+    "Objavte divy starovekého sveta!",
+    "Zažite kúzlo ľudskej kreativity!",
+    "Vstúpte do zázrakov histórie!",
+    "Ohromte sa inžinierskymi zázrakmi!",
+    "Pocíťte ducha nadčasových pamiatok!",
+    "Preskúmajte krásu svetového dedičstva!",
+    "Inšpirujte sa výnimočnými miestami sveta!"
+];
+
+function generateRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const quoteContainer = document.getElementById("quote");
+    quoteContainer.textContent = quotes[randomIndex];
+    quoteContainer.style.opacity = 1;
+    setTimeout(() => {
+        quoteContainer.style.opacity = 0;
+    }, 2000);
+}
+
+
+        const counter = document.getElementById("counter");
+        let count = 0;
+        function updateCounter() {
+            if (count < 10000) {
+                count += Math.floor(Math.random() * 10) + 1;
+                counter.textContent = count.toLocaleString();
+                setTimeout(updateCounter, 500);
+            }
+        }
+        updateCounter();
     </script>
 </body>
 </html>
