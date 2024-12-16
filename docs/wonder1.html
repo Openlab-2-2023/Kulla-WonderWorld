@@ -241,6 +241,7 @@
     </section>
 
     <section class="map-container" id="map">
+        <h2 style="text-align: center; color: #ffa500; margin-bottom: 15px;">Mapa - Pyramída v Gíze</h2>
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.869635030869!2d31.13130211511768!3d29.97923418191145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14584587b88ce57d%3A0x4c86b3aadd4e6ebf!2sGreat%20Pyramid%20of%20Giza!5e0!3m2!1sen!2sus!4v1687123456789!5m2!1sen!2sus" 
             loading="lazy" 
@@ -252,11 +253,9 @@
 
     <footer>
         © 2024 Veľká pyramída v Gíze. Všetky práva vyhradené.
-        <p>"Pyramídy sú mostom medzi minulosťou a budúcnosťou."</p>
     </footer>
 
     <script>
-     
         document.querySelectorAll('.highlight').forEach(element => {
             element.addEventListener('mouseenter', function () {
                 const bar = document.createElement('div');
@@ -274,7 +273,6 @@
             });
         });
 
-    
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -284,7 +282,6 @@
             });
         });
 
-       
         function scrollToTickets() {
             document.querySelector('#tickets').scrollIntoView({
                 behavior: 'smooth'

@@ -3,106 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Div 7: Tádž Mahal</title>
+    <title>Koloseum</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #2a2a2a;
-            color: white;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #e6e6e6;
+            line-height: 1.6;
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            background: rgba(18, 18, 18, 0.95);
+            padding: 10px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: auto;
-            text-align: center;
-            overflow-y: scroll;
-            padding: 20px;
-            animation: fadeIn 1s ease forwards;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            animation: subtleFloat 3s ease-in-out infinite;
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
         }
 
-        p {
-            font-size: 1.3rem;
-            max-width: 600px;
-            padding: 0 20px;
-            line-height: 1.5; 
+        nav ul li {
+            display: inline-block;
         }
 
-        .highlight {
-            color: #FF5733; 
+        nav ul li a {
+            text-decoration: none;
+            color: #e6e6e6;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
-        .image-container {
-            margin: 20px 0;
-            width: 100%;
-            max-width: 600px;
-            border: 2px solid #FFC300; 
-            border-radius: 10px; 
-            overflow: hidden; 
+        nav ul li a:hover {
+            color: #ffa500;
         }
 
-        .image-container img {
-            width: 100%; 
-            transition: transform 0.3s; 
-        }
-
-        .image-container:hover img {
-            transform: scale(1.05); 
-        }
-
-        .back {
-            margin-top: 30px;
-            padding: 10px 20px;
-            background-color: #444;
-            color: white;
+        .ticket-icon {
+            font-size: 2rem;
+            color: #ffa500;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
-        .back:hover {
-            background-color: #666;
+        .ticket-icon:hover {
+            transform: scale(1.2);
+            color: #e09500;
         }
 
-        @keyframes subtleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1c1f26, #23272e);
+            background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+            animation: fadeIn 1.5s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            font-size: 4rem;
+            color: #ffa500;
+            text-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.05);
+        }
+
+        .text-container {
+            background: #1c1f26;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-container h2 {
+            color: #ffa500;
+            margin-bottom: 15px;
+        }
+
+        .text-container p {
+            margin: 15px 0;
+        }
+
+        .highlight {
+            color: #ffa500;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+            position: relative;
+        }
+
+        .highlight::after {
+            content: attr(data-tooltip);
+            display: none;
+            position: absolute;
+            background: #23272e;
+            color: #e6e6e6;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+
+        .highlight:hover::after {
+            display: block;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 12px;
+            background: #161b22;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .ticket-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: #23272e;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .ticket-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffa500;
+        }
+
+        .ticket-section p {
+            margin-bottom: 20px;
+        }
+
+        .buy-tickets {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ffa500;
+            color: #121212;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease;
+        }
+
+        .buy-tickets:hover {
+            background: #e09500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1c1f26;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #dcdcdc;
         }
     </style>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Domov</a></li>
+            <li><a href="#about">O pamätníku</a></li>
+            <li><a href="#map">Mapa</a></li>
+        </ul>
+        <div class="ticket-icon" onclick="scrollToTickets()">🎟️</div>
+    </nav>
 
-    <h1>Div 7: Tádž Mahal</h1>
-    
-    <div class="image-container">
-        <img src="your-image-url-here.jpg" alt="Tádž Mahal">
-    </div>
+    <header id="home">
+        <h1>Tádž Mahal</h1>
+        <p>Ikonický symbol lásky a majstrovské dielo mughalskej architektúry.</p>
+    </header>
 
-    <p>
-        <span class="highlight">Tádž Mahal</span> je nádherná hrobka nachádzajúca sa v Agre v Indii, postavená v 17. storočí. Bol postavený na počesť Mughalského cisára Šáh Džahána ako hrobka pre jeho milovanú manželku Mumtáz Mahal.
-    </p>
-    
-    <p>
-        Tádž Mahal je známy svojou unikátnou architektúrou, ktorá kombinuje prvky islamskej, perzskej, indickej a osmanskej architektúry. Jeho biela mramorová konštrukcia je obklopená krásnymi záhradami a vodnými kanálmi, čo vytvára atmosféru pokoja a harmónie.
-    </p>
-    
-    <p>
-        Tádž Mahal bol zaradený na zoznam svetového dedičstva UNESCO a je považovaný za jeden z najkrajších príkladov architektúry na svete. Ročne pritahuje milióny turistov a zostáva symbolom lásky a oddanosti.
-    </p>
+    <section class="content" id="about">
+        <div class="image-container" style="text-align: center; width: 100%;">
+            <img src="images/GettyImages-1208049833-scaled-e1654782364566-1024x682-1-850x566.jpg"
+                 style="width: 100%; max-width: 600px; height: auto; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); margin: 0 auto;"
+                 alt="Tádž Mahal">
+        </div>
+        <div class="text-container" style="max-width: 550px; margin: 0 auto;">
+            <h2>O mieste</h2>
+            <p>
+                <span class="highlight" data-tooltip="Mauzóleum postavené v 17. storočí v Ágre, Indii">Tádž Mahal</span> je jedným z najkrajších architektonických diel na svete. 
+                Tento <span class="highlight" data-tooltip="Postavený cisárom Šáhdžahánom na pamiatku jeho manželky Mumtáz Mahal">mughalský pamätník</span> symbolizuje večnú lásku.
+            </p>
+            <p>
+                Nachádza sa v <span class="highlight" data-tooltip="Ágra, mesto v štáte Uttarpradéš, India">Ágre</span>, a je známy svojou bielou mramorovou fasádou, ktorá odráža svetlo v rôznych farbách počas dňa. 
+                Tádž Mahal je zapísaný v <span class="highlight" data-tooltip="UNESCO pridalo Tádž Mahal na zoznam svetového dedičstva v roku 1983">zozname UNESCO</span> a je považovaný za symbol mughalskej kultúry a architektúry.
+            </p>
+            <p>
+                Navštevovaný miliónmi turistov každý rok, Tádž Mahal je majstrovským dielom architektonického umenia a lásky.
+            </p>
+        </div>
+    </section>
 
-    <div class="back" onclick="location.href='home.html'">Späť na domovskú stránku</div>
+    <section class="map-container" id="map">
+        <h2 style="text-align: center; color: #ffa500; margin-bottom: 15px;">Mapa - Tádž Mahal</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3565.574020317757!2d78.04215521505895!3d27.1750159830096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39747730d935c8f3%3A0xe1b777af72f91f45!2sTaj%20Mahal!5e0!3m2!1sen!2sus!4v1715940401508!5m2!1sen!2sus"></iframe>
+    </section>
 
+    <section class="ticket-section" id="tickets">
+        <h3>Kúpiť lístky</h3>
+        <p>Navštívte Tádž Mahal a objavte jeho históriu a krásu.</p>
+        <a href="https://www.getyourguide.com/jaipur-l1149/private-taj-mahal-and-agra-fort-tour-by-car-from-jaipur-t875681/?ranking_uuid=c7907947-8e6c-49f9-96ce-7bd9f0efbff9" class="buy-tickets">Kúpiť lístky</a>
+    </section>
+
+    <footer>
+        © 2024 Tádž Mahal. Všetky práva vyhradené.
+    </footer>
+
+    <script>
+        function scrollToTickets() {
+            document.querySelector('#tickets').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
 </html>

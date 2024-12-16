@@ -3,106 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Div 6: Koloseum</title>
+    <title>Koloseum</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #2a2a2a;
-            color: white;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #e6e6e6;
+            line-height: 1.6;
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            background: rgba(18, 18, 18, 0.95);
+            padding: 10px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            text-align: center;
-            overflow-y: scroll;
-            padding: 20px;
-            animation: fadeIn 1s ease forwards;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            animation: subtleFloat 3s ease-in-out infinite;
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
         }
 
-        p {
-            font-size: 1.3rem;
-            max-width: 600px;
-            padding: 0 20px;
-            line-height: 1.5; 
+        nav ul li {
+            display: inline-block;
         }
 
-        .highlight {
-            color: #FF5733; 
+        nav ul li a {
+            text-decoration: none;
+            color: #e6e6e6;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
-        .image-container {
-            margin: 20px 0;
-            width: 100%;
-            max-width: 600px;
-            border: 2px solid #FFC300; 
-            border-radius: 10px; 
-            overflow: hidden; 
+        nav ul li a:hover {
+            color: #ffa500;
         }
 
-        .image-container img {
-            width: 100%; 
-            transition: transform 0.3s; 
-        }
-
-        .image-container:hover img {
-            transform: scale(1.05); 
-        }
-
-        .back {
-            margin-top: 30px;
-            padding: 10px 20px;
-            background-color: #444;
-            color: white;
+        .ticket-icon {
+            font-size: 2rem;
+            color: #ffa500;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
-        .back:hover {
-            background-color: #666;
+        .ticket-icon:hover {
+            transform: scale(1.2);
+            color: #e09500;
         }
 
-        @keyframes subtleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1c1f26, #23272e);
+            background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+            animation: fadeIn 1.5s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            font-size: 4rem;
+            color: #ffa500;
+            text-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.05);
+        }
+
+        .text-container {
+            background: #1c1f26;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-container h2 {
+            color: #ffa500;
+            margin-bottom: 15px;
+        }
+
+        .text-container p {
+            margin: 15px 0;
+        }
+
+        .highlight {
+            color: #ffa500;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+            position: relative;
+        }
+
+        .highlight::after {
+            content: attr(data-tooltip);
+            display: none;
+            position: absolute;
+            background: #23272e;
+            color: #e6e6e6;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+
+        .highlight:hover::after {
+            display: block;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 12px;
+            background: #161b22;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .ticket-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: #23272e;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .ticket-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffa500;
+        }
+
+        .ticket-section p {
+            margin-bottom: 20px;
+        }
+
+        .buy-tickets {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ffa500;
+            color: #121212;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease;
+        }
+
+        .buy-tickets:hover {
+            background: #e09500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1c1f26;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #dcdcdc;
         }
     </style>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Domov</a></li>
+            <li><a href="#about">O amfiteátri</a></li>
+            <li><a href="#map">Mapa</a></li>
+        </ul>
+        <div class="ticket-icon" onclick="scrollToTickets()">🎟️</div>
+    </nav>
 
-    <h1>Div 6: Koloseum</h1>
-    
-    <div class="image-container">
-        <img src="your-image-url-here.jpg" alt="Koloseum v Ríme">
-    </div>
+    <header id="home">
+        <h1>Koloseum</h1>
+        <p>Staroveký rímsky amfiteáter a symbol Ríma.</p>
+    </header>
 
-    <p>
-        <span class="highlight">Koloseum</span> je ikonická stavba nachádzajúca sa v srdci Ríma, postavená v 1. storočí nášho letopočtu. Je známe ako najväčší amfiteáter svojho druhu a symbolizuje moc a bohatstvo Rímskej ríše.
-    </p>
-    
-    <p>
-        Koloseum bolo postavené počas vlády cisára Vespasiana a dokončené jeho synom Titom. Mohlo pojať až 80 000 divákov, ktorí mohli sledovať rôzne formy zábavy, vrátane gladiátorských zápasov a verejných predstavení.
-    </p>
-    
-    <p>
-        Dnes je Koloseum považované za <span class="highlight">jedno z nových siedmich divov sveta</span> a je zaradené na zoznam svetového dedičstva UNESCO. Ročne priťahuje milióny turistov a zostáva jedným z najnavštevovanejších historických miest na svete.
-    </p>
+    <section class="content" id="about">
+        <div class="image-container" style="text-align: center; width: 100%;">
+            <img src="images/640px-Colosseum_at_night.jpg"
+                 style="width: 100%; max-width: 600px; height: auto; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); margin: 0 auto;"
+                 alt="Koloseum">
+        </div>
+        <div class="text-container" style="max-width: 550px; margin: 0 auto;">
+            <h2>O mieste</h2>
+            <p>
+                <span class="highlight" data-tooltip="Staroveký rímsky amfiteáter postavený v 1. storočí n.l.">Koloseum</span> je jedným z najväčších architektonických divov starovekého Ríma. 
+                Tento <span class="highlight" data-tooltip="Najväčší amfiteáter, ktorý bol kedy postavený, pojme až 50 000 divákov">rímsky amfiteáter</span> slúžil na gladiátorské zápasy a verejné predstavenia.
+            </p>
+            <p>
+                Nachádza sa v <span class="highlight" data-tooltip="Srdce starovekého Ríma, neďaleko Fóra Románum">centre Ríma</span>, a je známe svojou masívnou kamennou konštrukciou. 
+                Koloseum je zapísané v <span class="highlight" data-tooltip="UNESCO pridalo Koloseum na zoznam svetového dedičstva v roku 1980">zozname UNESCO</span> a je považované za symbol rímskej kultúry a histórie.
+            </p>
+            <p>
+                Dodnes je Koloseum jednou z najnavštevovanejších turistických atrakcií na svete a symbolom architektonického génia staroveku.
+            </p>
+        </div>
+    </section>
 
-    <div class="back" onclick="location.href='home.html'">Späť na domovskú stránku</div>
+    <section class="map-container" id="map">
+        <h2 style="text-align: center; color: #ffa500; margin-bottom: 15px;">Mapa - Koloseum</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3125.792104341271!2d12.4900503156058!3d41.8902143792201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f605c6c6b217d%3A0x14d19c1db2348d42!2sColosseum!5e0!3m2!1sen!2sus!4v1715940401508!5m2!1sen!2sus"></iframe>
+    </section>
 
+    <section class="ticket-section" id="tickets">
+        <h3>Kúpiť lístky</h3>
+        <p>Navštívte Koloseum a objavte jeho históriu a krásu.</p>
+        <a href="https://colosseum.tours" class="buy-tickets">Kúpiť lístky</a>
+    </section>
+
+    <footer>
+        © 2024 Koloseum. Všetky práva vyhradené.
+    </footer>
+
+    <script>
+        function scrollToTickets() {
+            document.querySelector('#tickets').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
 </html>
