@@ -231,11 +231,25 @@
 
         .secret-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 15px rgba(200, 200, 255, 0.5);
+            box-shadow: 0 0 15px rgba(200, 200, 255, 
+            0.5);
+            background: linear-gradient(145deg, #3b3b5e, #282840);
         }
     </style>
 </head>
 <body>
+    <script>
+        document.querySelectorAll('.marker').forEach(marker => {
+            marker.addEventListener('click', () => {
+                const targetName = marker.getAttribute('data-name');
+                const targetDiv = document.querySelector(`.wonder-div[data-name="${targetName}"]`);
+                if (targetDiv) {
+                    targetDiv.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+    
     <div class="stars" id="stars"></div>
     <a href="about.html" class="about-link">O nás</a>
     <header>
